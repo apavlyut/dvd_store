@@ -1,0 +1,100 @@
+<br /><br /><br />
+<div class="my_floats with_large_cover">
+	<% @movies.each do |movie| %>
+   		<div class="my_float">
+			<div class="movie_large" onmouseover="$('movie-<%= movie.id %>-details').show();" onmouseout="$('movie-<%= movie.id %>-details').hide();">
+				<div class="movie">
+					<%= image_tag("/images/covers/cover_#{movie.cover.filename}", :class => "bordered") %>
+				</div>
+				<a href="<%= movie_url(movie) %>" class="clear">
+				<div class="details" id="movie-<%= movie.id %>-details" style="display:none">
+					<h3><%= movie.title %></h3>
+					<p></p>
+					<div class="price"><%= movie.price %> р</div>
+				</div>
+				</a>
+			</div>
+   		</div>
+	<% end %>
+</div>
+
+<div class="shelf">
+	<div class="shelf_title">
+		Новинки &rarr;
+	</div>
+</div>
+
+<div class="under_shelf_big" />
+
+<br /><br /><br />
+
+<div class="floats line small frontpage">
+	<% @movies.each do |movie| %>
+		<div class="left">
+	        <div class="r">
+				<div class="movie_th" 
+						 onmouseover="$('1-movie_th-<%= movie.id %>-details').show();"
+						 onmouseout="$('1-movie_th-<%= movie.id %>-details').hide();">
+					<div class="movie">
+						<%= image_tag("/images/covers/cover_th_#{movie.cover.filename}", :class => "bordered") %>
+					</div>
+					<a href="<%= movie_url(movie) %>" class="clear">
+					<div class="details" id="1-movie_th-<%= movie.id %>-details" style="display:none">
+						<h3><%= movie.title %></h3>
+						<p></p>
+						<div class="price"><%= movie.price %> р</div>
+					</div>
+					</a>
+				</div>
+				
+	        </div>
+	        <div class="min"></div>
+	    </div>
+	<% end %>
+</div>
+<div class="shelf">
+	<div class="shelf_title">
+		Фильмы &rarr;
+	</div>
+</div>
+
+<div class="under_shelf_big" />
+<br /><br /><br />
+
+<div class="floats line small frontpage">
+	<% @movies.each do |movie| %>
+		<% movie = @movies.rand %>
+		<div class="left">
+	        <div class="r">
+	            <%= render :partial => "shared/movie_th", :locals => {:movie => movie } %>
+	        </div>
+	        <div class="min"></div>
+	    </div>
+	<% end %>
+</div>
+
+<div class="shelf">
+	<div class="shelf_title">
+		Игры &rarr;
+	</div>
+</div>
+<div class="under_shelf_big" />
+<br /><br /><br />
+
+<div class="floats line small frontpage">
+	<% 10.times do  %>
+		<% movie = @movies.rand %>
+		<div class="left">
+	        <div class="r">
+	            <%= render :partial => "shared/movie_th", :locals => {:movie => movie } %>
+	        </div>
+	        <div class="min"></div>
+	    </div>
+	<% end %>
+</div>
+<div class="under_shelf_big" />
+<div class="shelf">
+	<div class="shelf_title">
+		Музыка &rarr;
+	</div>
+</div>

@@ -1,0 +1,9 @@
+<ul>
+	<% if @category  %>
+		<li><%= link_to ProductType.find_by_code(code).title, my_products_url(code) %></li>
+		<li>&rarr;</li>
+		<li><%= @category.title %> &darr;</li>
+	<% else %>
+		<li><%= ProductType.find_by_code(code).title %> &darr;</li>
+	<% end %>
+</ul>

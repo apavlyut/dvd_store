@@ -1,0 +1,27 @@
+<% left_menu do %>
+	<%= render :partial => "management/home/menu" %>
+<% end %>
+
+<% page_title "Товары магазина" %>
+
+<div id="content_menu">
+	<ul>
+		<li>
+			<%= link_to "Создать новый товар &rarr;", new_management_product_url %>
+		</li>
+	</ul>
+</div>
+
+
+<h2>Все товары</h2>
+
+<table border="1" width="100%">
+	
+	<% @products.each do |product| %>
+	<tr>
+		<td><%= product.title %></td>
+		<td><%= link_to "Редактировать", edit_management_product_url(product) %> | 
+		<%= link_to "Удалить",  management_product_url(product), :confirm => "Are ты sure?", :method => :delete %></td>
+	</tr>	
+	<% end %>
+</table>

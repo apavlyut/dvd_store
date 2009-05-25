@@ -1,0 +1,40 @@
+<% page_title "Корзина" %>
+<%= button_to "Очистить корзину", :action => :clear %>
+<h2>В тележке:</h2>
+<div id="cart_items">
+
+<% form_for :cart, @cart, :url => {:action => "update"} do |f| %>
+<table border="1" width="100%">
+<% @cart.items.each do |item| %>
+	<tr class="cart_tem">
+		<td>
+			<%= render :partial => "shared/movie_th", :locals  => { :movie => item.product } %>
+		</td>	
+		<td>
+			<%= item.title  %>
+		</td>
+		<td>
+			<%= text_field_tag "qty[#{item.product.id.to_s}]", item.quantity %>
+		</td>
+		<td>
+			<%= item.price %> руб	
+		</td>
+	</tr>
+<% end %>
+	<tr>
+		<td></td>
+		<td>
+			<strong>Всего товаров на сумму:</strong>
+		</td>
+		<td>
+			<%= f.submit "Обновить" %>
+		<% end %>
+		</td>
+		<td>
+			<%= @cart.total_price if @cart %> руб
+		</td>
+	</tr>
+</table>
+
+<p>Нажимая кнопку «Далее &rarr;», я соглашаюсь с правилами доставки и оплаты.</p>
+<%= button_to "Перейти к оформлению заказа &rarr;", :controller => :order, :action => :new %>

@@ -1,0 +1,4 @@
+<div id="screenshot_th_<%= screenshot_th.id %>" style="float:left">
+	<%= image_tag "/images/covers/screenshot_th_#{screenshot_th.filename}", :vspace => 10, :hspace => 10, :class => "bordered" %><br>
+	<%= link_to_remote "Удалить (X)", :url => {:action => "destroy_screenshot", :screen_id => screenshot_th.id } %>
+</div>

@@ -1,0 +1,134 @@
+GET http://wwww.medialit.ru/
+
+* Главная страница магазина
+* Топ продуктов
+* Новинки
+
+GET http://wwww.medialit.ru/movies
+
+* Фильмы DVD и Blu-Ray
+
+
+GET http://wwww.medialit.ru/movies/dvd
+
+* Фильмы DVD
+
+
+GET http://wwww.medialit.ru/movies/bluray
+
+* Фильмы Blu-Ray
+
+
+GET http://wwww.medialit.ru/music
+
+* Музыка магаза
+
+
+GET http://wwww.medialit.ru/account
+
+* Аккаунт пользователя
+
+
+GET http://wwww.medialit.ru/
+
+
+Routes:
+
+/movies - movies(DVD+Blu-Ray) start page
+/movies/12 - dvd or bluray
+/movies/category/32 - category of movies
+
+/movies/dvd - dvd start page
+/movies/dvd/12 - dvd
+/movies/dvd/category/32 - category of product
+
+/movies/bluray - bluray start page
+/movies/bluray/12 - bluray
+/movies/bluray/category/32 - category of bluray
+
+/music/
+/music/12
+/music/category/12
+
+
+/games
+/games/12
+/games/category/12
+/games/platform/18
+
+/music - music start page
+/music/12 - music
+/music/category/32 - category of music
+
+
+/about/shipping
+
+/account
+/cart
+
+/movies - каталог фильмов
+/movies/12 - страница с описанием фильма
+/movies/genres/4 - фильмы определенной категории
+
+/games - каталог игр
+/games/12 - страница с описанием игры
+/games/genres/12 - игры определенной категории
+
+/music - музыка на двд
+/music/23 - страница с описанием музыкального dvd
+/music/genres/44 - музыка определенного жанра
+
+/people/15 - странца на которой приведены описание персонажа (личное фото + текстовое описание если надо) а также все фильмы в которых он задействован - это актер, режиссер или  продюссер ...
+
+Корзина:
+
+/cart - корзина
+/cart/add - добавление в корзину
+/cart/added - список выбранных товаров для покупки
+
+Оформление заказа:
+
+/cart/order - Шаг 1: уточнить количество товаров или удалить выбранные
+
+/cart/order/address - Шаг 4:  Ввести адрес доставки и получателя:
+	- Фио получателя
+	- Телефон
+	- Метро
+	- Адрес
+	- Дополнительная информация
+	
+/cart/order/delivery - Шаг 2: выбрать способ доставки:
+	- курьерская
+	- самовывоз
+	
+/cart/order/payment - Шаг 3: выбор способа оплаты:
+	- наличные курьеру
+	- карты оплаты:
+		- mastercard
+		- visa
+	- Электронные деньги
+		- Яндекс.Деньги
+		- WebMoney
+		- e-port
+		- Мобильный платеж (Билайн)
+	
+/cart/order/confirm - Шаг 5:  Подтверждение заказа - информация о заказе, о продавце и о покупателе
+
+/cart/order/done - Заказ принят
+
+######## Управелние
+
+/management/home - корень
+/management/products - все продукты - управление складом
+/management/customers - клиенты 
+/management/orders - заказы 
+
+movie has one cover
+movie has many screenshots
+movie has many trailers
+
+game has one cover
+game has many screenshots
+game has many trailers
+
+music has one cover

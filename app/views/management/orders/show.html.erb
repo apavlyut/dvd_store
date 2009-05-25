@@ -1,0 +1,10 @@
+<% content_for :sidebar do %>
+	<%= render :partial => "management/home/menu" %>
+<% end %>
+<h1>Детали заказа</h1>
+
+<%= @order.full_name %>
+<% rounded_block do %>
+	<%= debug @order %>
+	<%= debug @order.order_items %>
+<% end %>

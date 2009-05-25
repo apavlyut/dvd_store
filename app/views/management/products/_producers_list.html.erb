@@ -1,0 +1,12 @@
+<div class="producers_suggestions_list" >
+	<ul>
+		<% producers.each do |producer| %>
+			<li>
+				<%= link_to_function producer.full_name do |page|
+						page.insert_html :bottom, "producers_place_list", "<li>#{producer.full_name}</li><input type='hidden' name='product[producer_ids][]' value='#{producer.id}'>"
+						page[:list_of_producers].replace_html ""
+					end %>
+			</li>
+		<% end %>
+	</ul>
+</div>

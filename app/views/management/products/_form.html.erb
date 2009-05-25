@@ -1,0 +1,188 @@
+<% content_for :head do %>
+	<%= javascript_include_tag "product" %>
+<% end %>
+
+<script type="text/javascript" charset="utf-8">
+	function yoyo() {
+		val = $("product_product_type_id").getValue();
+		switch (val)
+		{
+			case "1":
+				what = 'dvd';
+			  	break;
+			case "2":
+			  	what = 'bluray';
+			  	break;
+			case "3":
+			  	what = 'game';
+			  	break;
+			case "4":
+			  	what = 'music';
+			  	break;
+			case "7":
+			  	what = 'toy';
+			  	break;
+			default:
+				what = 'dvd';
+		}
+		show_only(what);
+	}
+
+	function show_only(what) {
+		// Hiding All Fields
+		$$('.anc').each(function(value) { value.hide(); });
+
+		// Showing field
+		$$("."+what).each( function(value) { value.show(); });
+	}
+	<%
+		@product.new_record? ? what = "dvd" : what = @product.product_type.code
+	%>
+	document.observe('dom:loaded', function() {
+		show_only('<%= what %>')
+	});
+</script>
+
+
+<% if @product.new_record? %>
+<p>
+	<%= f.label :product_type_id, "Тип товара" %> &mdash;
+	<%= f.select(:product_type_id, ProductType.find(:all).collect {|p| [ p.title, p.id ] }, { :include_blank => false }) %>
+	<%= observe_field("product_product_type_id", :frequency => 0.1, :function => "yoyo()") %>
+</p>
+<% end %>
+
+<p class="anc dvd bluray game music toy">
+	<%= f.label :title, "Название" %><br/>
+	<%= f.text_field :title, :class => "input" %>
+</p>
+
+<p class="anc dvd bluray">
+	<%= f.label :title_origin, "Оригинальное название" %><br/>
+	<%= f.text_field :title_origin, :class => "input" %>
+</p>
+
+<p class="anc dvd bluray game music toy">
+	<%= f.label :description, "Описание" %> <br/>
+	<br/>
+	<%= textile_editor :product, :description -%>
+	<%= textile_editor_initialize -%>
+	<% f.text_area :description, :rows => 10 %>
+	<br/>
+</p>
+
+<p class="anc dvd bluray game music toy">
+	<%= f.label :price, "Цена:" %>&nbsp;&nbsp;<br>
+	<%= f.text_field :price, :class => "input", :style => "width:150px"  %> руб.
+</p>
+
+<p class="anc dvd bluray">
+	<%= f.hidden_field :producer_id %>
+	<%= label :producer, :full_name, "Режиссер:" %>&nbsp;&nbsp;<br>
+	<%= text_field_with_auto_complete :producer, :full_name, { :value => (@product.producer.full_name if @product.producer), :class => "input"}, { :after_update_element => "captureProducer"} %>
+</p>
+
+<p class="anc dvd bluray game">
+	<%= f.hidden_field :film_studio_id %>
+	<%= label :film_studio, :title, "Кинокомпания / Компания производитель:" %>&nbsp;&nbsp;<br>
+	<%= text_field_with_auto_complete :film_studio, :title, { :value => (@product.film_studio.title if @product.film_studio), :class => "input"}, { :after_update_element => "captureFilmStudio"} %>
+</p>
+
+<p class="anc dvd bluray game music">
+	<%= f.label :release_date, "Дата выпуска" %> <br>
+	<%= f.date_select :release_date, :size => 10  %>
+</p>
+
+<p class="anc dvd bluray game music">
+	<%= f.label :distributor, "Дистрибъютер" %>
+	<%= f.text_field :distributor, :class => "input" %>
+</p>
+
+<p class="anc dvd bluray music">
+	<%= f.label :movie_duration, "Продолжительность фильма, минут" %>
+	<%= f.text_field :movie_duration, :class => "input" %>
+</p>
+
+<div class="anc dvd bluray game music toy">
+	<%= tags_for_autocomplete "Страна", "country", "title", @product.countries %>
+</div>
+
+<div class="anc dvd bluray game music toy">
+	<%= tags_for_autocomplete "Категория", "category", "title", @product.categories %>
+</div>
+
+<div class="anc dvd bluray">
+	<%= tags_for_autocomplete "В ролях", "actor", "full_name", @product.actors %>
+</div>
+
+<table cellspacing="0" class="anc dvd bluray game music toy" id="media_stuff">
+	<tr>
+		<td valign="top">
+			<fieldset>
+				<legend>
+					<h3>Обложка / Фото</h3>
+				</legend>
+				
+				<p>
+					<%= image_tag("/images/covers/cover_th_#{@product.cover_filename}", :class => :bordered ) unless @product.new_record? %><br>
+				</p>
+				<p>
+					<%= label_tag :cover_file, "Изменить:" %> <br>
+					<%= file_field_tag :cover_file %>
+				</p>
+			</fieldset>
+		</td>
+		<td valign="top">
+			<fieldset>
+				<legend>
+					<h3>Кадры / Скриншоты / Фотографии</h3>
+				</legend>
+			
+				<div id="screenshot_ths">
+					<%= render :partial => "screenshot_th", :collection => @product.screenshots %>
+				</div>
+				
+				<div id="screens_input">
+					<%= render :partial => "screenshot" %>
+				</div>
+				
+				<%= link_to_function "+ Добавить еще кадров" do |page|
+						page.insert_html :bottom, "screens_input", :partial => "screenshot"
+					end
+				%>
+			</fieldset>
+		</td>
+	</tr>
+</table>
+
+<p class="anc dvd bluray game music toy">
+	<%= f.label :trailer, "Трейлер / Видео - код плеера" %>
+	<%= f.text_area :trailer, :rows => 10 %>
+</p>
+
+<p class="anc dvd bluray">
+	<%= f.label :regional_code, "Региональный код" %>
+	<%= f.text_field :regional_code, :class => "input" %>
+</p>
+<!-- 
+<p class="anc dvd bluray game music toy">
+	<%= f.label :data_medium, "Формат носителя" %>
+	<%= f.text_field :data_medium, :class => "input" %>
+</p>
+-->
+<p class="anc dvd bluray">
+	<%= f.label :subtitle, "Субтитры" %>
+	<%= f.text_field :subtitle, :class => "input" %>
+</p>
+<p class="anc dvd bluray">
+	<%= f.label :audio_track, "Звуковые дорожки" %>
+	<%= f.text_field :audio_track, :class => "input" %>
+</p>
+<p class="anc dvd bluray">
+	<%= f.label :split_screen_format, "Формат изображения" %>
+	<%= f.text_field :split_screen_format, :class => "input" %>
+</p>
+<p class="anc dvd bluray game music">
+	<%= f.label :addons, "Дополнтиельные материалы" %>
+	<%= f.text_area :addons, :class => "input", :rows => 5 %>
+</p>

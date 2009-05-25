@@ -1,0 +1,38 @@
+
+<div class="floats line small frontpage">
+	<% @movies.each do |movie| %>
+		<% movie = @movies.rand %>
+		<div class="left">
+	        <div class="r">
+	            <%= render :partial => "shared/movie_th", :locals => {:movie => movie } %>
+	        </div>
+	        <div class="min"></div>
+	    </div>
+	<% end if @movies %>
+</div>
+
+<div class="shelf">
+	<div class="shelf_title">
+		Игры &rarr;
+	</div>
+</div>
+<div class="under_shelf_big" />
+<br /><br /><br />
+
+<div class="floats line small frontpage">
+	<% 10.times do  %>
+		<% movie = @movies.rand %>
+		<div class="left">
+	        <div class="r">
+	            <%= render :partial => "shared/movie_th", :locals => {:movie => movie } %>
+	        </div>
+	        <div class="min"></div>
+	    </div>
+	<% end if @movies %>
+</div>
+<div class="under_shelf_big" />
+<div class="shelf">
+	<div class="shelf_title">
+		Музыка &rarr;
+	</div>
+</div>

@@ -1,0 +1,10 @@
+<% content_for :sidebar do %>
+	<%= render :partial => "management/home/menu" %>
+<% end %>
+
+<h1>Редактирование категории</h1>
+
+<% form_for @category, :url => management_category_path do |f| %>
+	<%= render :partial => "form", :locals => {:f => f} %>
+	<%= f.submit "Сохранить" %>
+<% end %>

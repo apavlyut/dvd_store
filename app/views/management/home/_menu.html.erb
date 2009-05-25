@@ -1,0 +1,12 @@
+<h3>Меню управления</h3>
+<ul>
+	<li>
+		<%= link_to_unless_current "Товары магазина", management_products_url %>
+	</li>
+	<li>
+		<%= link_to_unless_current "Товарные категории", management_categories_url %>
+	</li>
+	<li>
+		<%= link_to "Заказы", management_orders_url %>
+	</li>
+</ul>

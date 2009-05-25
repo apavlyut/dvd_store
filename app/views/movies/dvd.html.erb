@@ -1,0 +1,140 @@
+<% page_title "&nbsp;" %>
+
+<% left_menu do %>
+	<%= render :partial => "shared/categories_menu", :locals => {:code => "dvd"} %>
+<% end %>
+
+<% content_menu do %>
+	<ul>
+		<li><%= link_to "&larr; Все фильмы", dvds_url %></li>
+	</ul>
+<% end %>
+
+<div class="movie_full">
+	
+	<div class="cover">
+		<%= image_tag("/images/covers/cover_#{@dvd.cover_filename}", :class => "bordered") %>
+	</div>
+	<div class="add_to_cart">
+		<p>
+			<strong><%= @dvd.price %></strong> руб.
+		</p>
+		<%= link_to image_tag("/images/assets/add_to_cart.png"), :controller => :cart, :action => :add_to_cart, :id => @dvd %>
+	</div>
+	
+	<h1 class="title"><%= @dvd.title %></h1>
+	<h2 class="title_origin"><%= @dvd.title_origin %></h2>
+	<div class="stars">
+		<%= votes_stars %>
+		<%= link_to "#{rand(134)} отзывов", "#", :class => :js %>
+	</div>
+	
+	<p>
+		<%= @dvd.categories.collect{ |category| link_to category.title, category_url(category) }.join(", ") %>
+	</p>
+
+	<p>
+		<%= "#{link_to @dvd.film_studio.title}, " if @dvd.film_studio %> 
+		<%= @dvd.countries.collect{ |country| country.title }.join(", ") if @dvd.countries %> 
+		<%= "(#{@dvd.release_date.year}), " if @dvd.release_date %>
+		<%= "#{@dvd.movie_duration} мин." if @dvd.movie_duration %>
+	</p>
+	<% if @dvd.producer  %>
+	<div class="producer">
+		
+		<strong>Режиссер</strong>
+		<br>
+		<%= link_to @dvd.producer.full_name %>
+		
+	</div>
+	<% end %>
+	
+	<% unless @dvd.actors.empty? %>
+	<div class="actors">
+		
+		<strong>В ролях</strong>
+		<br>
+		<%= @dvd.actors.collect{ |actor| link_to(actor.full_name) }.join(", ") %>
+		
+	</div>
+	<% end %>
+	
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<% unless @dvd.description.empty? %>
+		<div class="description" style="clear:both">
+			<div class="title">От издателя</div>
+		   	<div class="text"><%= textilize(@dvd.description) %></div>
+		</div>
+	<% end %>
+	<div class="details">
+		
+		<div class="details_text">
+			
+			<h2>Подробности</h2>
+			
+			<div class="details_left">
+				<% if @dvd.data_medium %>
+				<div class="title">Формат носителя</div>
+				<div class="text"><%= @dvd.data_medium %></div>
+				<% end %>
+				<% if @dvd.distributor %>
+				<div class="title">Дистрибьютер</div>
+				<div class="text"><%= @dvd.distributor %></div>
+				<% end %>
+				<% if @dvd.regional_code %>	
+				<div class="title">Региональный код</div>
+				<div class="text"><%= @dvd.regional_code %></div>
+				<% end %>
+				<% if @dvd.subtitle %>
+				<div class="title">Субтитры</div>
+				<div class="text"><%= @dvd.subtitle %></div>	
+				<% end %>
+			</div>
+			
+			<div class="details_right">
+				<% if @dvd.split_screen_format %>
+				<div class="title">Формат изображения</div>
+				<div class="text"><%= @dvd.split_screen_format %></div>
+				<% end %>
+				<% if @dvd.audio_track %>
+				<div class="title">Звуковые дорожки</div>
+				<div class="text"><%= @dvd.audio_track %></div>
+				<% end %>
+				<% if @dvd.addons %>
+				<div class="title">Дополнительные материалы</div>
+				<div class="text"><%= @dvd.addons %></div>
+				<% end %>
+			</div>
+			
+		</div>
+		
+		<div class="details_media">
+			<h2>Мультимедиа</h2>
+			<%= link_to_function "Кадры из фильма" do |page|
+					page[:frames].show
+					page[:trailer].hide
+				end %> | 
+				<%= link_to_function "Трейлер"	do |page|
+						page[:frames].hide
+						page[:trailer].show
+					end %>
+			<div id="frames">
+				<p>&nbsp;</p>
+				<% @dvd.screenshots.each do |sh| %>
+					<%= link_to (image_tag "/images/covers/screenshot_th_#{sh.filename}", :class => "bordered", :style => "float:left; margin: 0 10pt 10pt 0;"), "/images/covers/screenshot_#{sh.filename}", :target => "blank" %>
+				<% end %>
+			</div>
+			<div id="trailer" style="display:none">
+				<p>&nbsp;</p>
+				
+					<%= @dvd.trailer %>
+				
+				<p>&nbsp;</p>
+				
+				<p>&nbsp;</p>
+			</div>
+		</div>
+	</div>
+	
+</div>

@@ -1,0 +1,15 @@
+<% content_for :sidebar do %>
+	<%= render :partial => "shared/categories_menu", :locals => {:code => "dvd"} %>
+<% end %>
+
+<div class="floats small">
+<% @dvds.each do |dvd| %>
+	<div class="left">
+        <div class="r">
+            <%= render :partial => "shared/movie_th", :locals => {:movie => dvd } %>
+        </div>
+        <div class="min"></div>
+    </div>
+<% end %>
+</div>
+	

@@ -1,0 +1,136 @@
+<% page_title "&nbsp;" %>
+
+<% left_menu do %>
+	<%= render :partial => "shared/categories_menu", :locals => {:code => @music.product_type.code} %>
+<% end %>
+
+<%= page_title "Музыка" %>
+
+<div class="movie_full">
+	
+	<div class="cover">
+		<%= image_tag("/images/covers/cover_#{@music.cover_filename}", :class => "bordered") %>
+	</div>
+	<div class="add_to_cart">
+		<p>
+			<strong><%= @music.price %></strong> руб.
+		</p>
+		<%= link_to image_tag("/images/assets/add_to_cart.png"), :controller => :cart, :action => :add_to_cart, :id => @music %>
+	</div>
+	
+	<h1 class="title"><%= @music.title %></h1>
+	<h2 class="title_origin"><%= @music.title_origin %></h2>
+	<div class="stars">
+		<%= votes_stars %>
+		<%= link_to "#{rand(134)} отзывов", "#", :class => :js %>
+	</div>
+	
+	<p>
+		<%= @music.categories.collect{ |category| link_to category.title, my_category_url("game", category) }.join(", ") %>
+	</p>
+
+	<p>
+		<%= "#{link_to @music.film_studio.title}, " if @music.film_studio %> 
+		<%= @music.countries.collect{ |country| country.title }.join(", ") if @music.countries %> 
+		<%= "(#{@music.release_date.year}), " if @music.release_date %>
+		<%= "#{@music.movie_duration} мин." if @music.movie_duration %>
+	</p>
+	<% if @music.producer  %>
+	<div class="producer">
+		
+		<strong>Режиссер</strong>
+		<br>
+		<%= link_to @music.producer.full_name %>
+		
+	</div>
+	<% end %>
+	
+	<% unless @music.actors.empty? %>
+	<div class="actors">
+		
+		<strong>В ролях</strong>
+		<br>
+		<%= @music.actors.collect{ |actor| link_to(actor.full_name) }.join(", ") %>
+		
+	</div>
+	<% end %>
+	
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<% unless @music.description.empty? %>
+		<div class="description" style="clear:both">
+			<div class="title">От издателя</div>
+		   	<div class="text"><%= textilize(@music.description) %></div>
+		</div>
+	<% end %>
+	<div class="details">
+		
+		<div class="details_text">
+			
+			<h2>Подробности</h2>
+			
+			<div class="details_left">
+				<% if @music.data_medium %>
+				<div class="title">Формат носителя</div>
+				<div class="text"><%= @music.data_medium %></div>
+				<% end %>
+				<% if @music.distributor %>
+				<div class="title">Дистрибьютер</div>
+				<div class="text"><%= @music.distributor %></div>
+				<% end %>
+				<% if @music.regional_code %>	
+				<div class="title">Региональный код</div>
+				<div class="text"><%= @music.regional_code %></div>
+				<% end %>
+				<% if @music.subtitle %>
+				<div class="title">Субтитры</div>
+				<div class="text"><%= @music.subtitle %></div>	
+				<% end %>
+			</div>
+			
+			<div class="details_right">
+				<% if @music.split_screen_format %>
+				<div class="title">Формат изображения</div>
+				<div class="text"><%= @music.split_screen_format %></div>
+				<% end %>
+				<% if @music.audio_track %>
+				<div class="title">Звуковые дорожки</div>
+				<div class="text"><%= @music.audio_track %></div>
+				<% end %>
+				<% if @music.addons %>
+				<div class="title">Дополнительные материалы</div>
+				<div class="text"><%= @music.addons %></div>
+				<% end %>
+			</div>
+			
+		</div>
+		
+		<div class="details_media">
+			<h2>Мультимедиа</h2>
+			<%= link_to_function "Кадры из фильма" do |page|
+					page[:frames].show
+					page[:trailer].hide
+				end %> | 
+				<%= link_to_function "Трейлер"	do |page|
+						page[:frames].hide
+						page[:trailer].show
+					end %>
+			<div id="frames">
+				<p>&nbsp;</p>
+				<% @music.screenshots.each do |sh| %>
+					<%= link_to (image_tag "/images/covers/screenshot_th_#{sh.filename}", :class => "bordered", :style => "float:left; margin: 0 10pt 10pt 0;"), "/images/covers/screenshot_#{sh.filename}", :target => "blank" %>
+				<% end %>
+			</div>
+			<div id="trailer" style="display:none">
+				<p>&nbsp;</p>
+				
+					<%= @music.trailer %>
+				
+				<p>&nbsp;</p>
+				
+				<p>&nbsp;</p>
+			</div>
+		</div>
+	</div>
+	
+</div>

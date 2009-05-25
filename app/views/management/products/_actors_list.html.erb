@@ -1,0 +1,12 @@
+<div class="actors_suggestions_list" >
+	<ul>
+		<% actors.each do |actor| %>
+			<li>
+				<%= link_to_function actor.full_name do |page|
+						page.insert_html :bottom, "actors_place_list", "<li>#{actor.full_name}</li><input type='hidden' name='product[actor_ids][]' value='#{actor.id}'>"
+						page[:list_of_actors].replace_html ""
+					end %>
+			</li>
+		<% end %>
+	</ul>
+</div>

@@ -1,0 +1,16 @@
+<% content_for :sidebar do %>
+	<%= render :partial => "shared/categories_menu", :locals => {:code => "music"} %>
+<% end %>
+
+<%= page_title "Вся музыка" %>
+
+<div class="floats small">
+<% @music_items.each do |music| %>
+	<div class="left">
+        <div class="r">
+            <%= render :partial => "shared/movie_th", :locals => {:movie => music } %>
+        </div>
+        <div class="min"></div>
+    </div>
+<% end %>
+</div>

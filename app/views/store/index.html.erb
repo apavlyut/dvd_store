@@ -1,0 +1,164 @@
+<br /><br /><br />
+<div class="my_floats with_large_cover">
+	<% @tops.each do |top| %>
+   		<div class="my_float">
+			<div class="top_large" onmouseover="$('top-<%= top.id %>-details').show();" onmouseout="$('top-<%= top.id %>-details').hide();">
+				<div class="movie">
+					<%= image_tag("/images/covers/cover_#{top.cover_filename}", :class => "bordered") %>
+				</div>
+				<a href="<%= my_product_url(top.product_type.code,top.id) %>" class="clear">
+				<div class="details" id="top-<%= top.id %>-details" style="display:none">
+					<h3><%= top.title %></h3>
+					<p></p>
+					<div class="price"><%= top.price %> р</div>
+				</div>
+				</a>
+			</div>
+   		</div>
+	<% end %>
+</div>
+
+<div class="shelf">
+	<div class="shelf_title">
+		Новинки &rarr;
+	</div>
+</div>
+
+<div class="under_shelf_big" />
+
+<br /><br /><br />
+
+<div class="floats line frontpage">
+	<% @movies.each do |movie| %>
+		<div class="left">
+	        <div class="r">
+				<div class="movie_th" 
+						 onmouseover="$('movie_th-<%= movie.id %>-details').show();"
+						 onmouseout="$('movie_th-<%= movie.id %>-details').hide();">
+					<div class="movie">
+						<%= image_tag("/images/covers/cover_th_#{movie.cover_filename}", :class => "bordered") %>
+					</div>
+					
+					<a href="<%= my_product_url(movie.product_type.code, movie) %>" class="clear">
+						<div id="movie_th-<%= movie.id %>-details" style="display:none" class="th_details">
+							<h3><%= movie.title %></h3>
+							<p></p>
+							<div class="price"><%= movie.price %> р</div>
+						</div>
+					</a>
+				</div>
+	        </div>
+	        <div class="min"></div>
+	    </div>
+	<% end if @movies %>
+</div>
+<div class="shelf">
+	<div class="shelf_title">
+		Фильмы &rarr; 
+	</div>
+</div>
+
+<div class="under_shelf_big" />
+<br /><br /><br />
+
+<div class="floats line frontpage">
+	<% @games.each do |game| %>
+		<div class="left">
+	        <div class="r">
+				<div class="movie_th" 
+						 onmouseover="$('movie_th-<%= game.id %>-details').show();"
+						 onmouseout="$('movie_th-<%= game.id %>-details').hide();">
+					<div class="movie">
+						<%= image_tag("/images/covers/cover_th_#{game.cover_filename}", :class => "bordered") %>
+					</div>
+					
+					<a href="<%= my_product_url(game.product_type.code, game) %>" class="clear">
+						<div id="movie_th-<%= game.id %>-details" style="display:none" class="th_details">
+							<h3><%= game.title %></h3>
+							<p></p>
+							<div class="price"><%= game.price %> р</div>
+						</div>
+					</a>
+				</div>
+	        </div>
+	        <div class="min"></div>
+	    </div>
+	<% end if @games %>
+</div>
+<div class="shelf">
+	<div class="shelf_title">
+		Игры &rarr; 
+	</div>
+</div>
+
+<div class="under_shelf_big" />
+<br /><br /><br />
+
+
+
+<div class="floats line frontpage">
+	<% @music_items.each do |game| %>
+		<div class="left">
+	        <div class="r">
+				<div class="movie_th" 
+						 onmouseover="$('movie_th-<%= game.id %>-details').show();"
+						 onmouseout="$('movie_th-<%= game.id %>-details').hide();">
+					<div class="movie">
+						<%= image_tag("/images/covers/cover_th_#{game.cover_filename}", :class => "bordered") %>
+					</div>
+					
+					<a href="<%= my_product_url(game.product_type.code, game) %>" class="clear">
+						<div id="movie_th-<%= game.id %>-details" style="display:none" class="th_details">
+							<h3><%= game.title %></h3>
+							<p></p>
+							<div class="price"><%= game.price %> р</div>
+						</div>
+					</a>
+				</div>
+	        </div>
+	        <div class="min"></div>
+	    </div>
+	<% end if @games %>
+</div>
+<div class="shelf">
+	<div class="shelf_title">
+		Музыка &rarr; 
+	</div>
+</div>
+
+<div class="under_shelf_big" />
+<br /><br /><br />
+
+
+<div class="floats line frontpage">
+	<% @toys.each do |game| %>
+		<div class="left">
+	        <div class="r">
+				<div class="movie_th" 
+						 onmouseover="$('movie_th-<%= game.id %>-details').show();"
+						 onmouseout="$('movie_th-<%= game.id %>-details').hide();">
+					<div class="movie">
+						<%= image_tag("/images/covers/cover_th_#{game.cover_filename}", :class => "bordered") %>
+					</div>
+					
+					<a href="<%= my_product_url(game.product_type.code, game) %>" class="clear">
+						<div id="movie_th-<%= game.id %>-details" style="display:none" class="th_details">
+							<h3><%= game.title %></h3>
+							<p></p>
+							<div class="price"><%= game.price %> р</div>
+						</div>
+					</a>
+				</div>
+	        </div>
+	        <div class="min"></div>
+	    </div>
+	<% end if @games %>
+</div>
+<div class="shelf">
+	<div class="shelf_title">
+		Игрушки &rarr; 
+	</div>
+</div>
+
+<div class="under_shelf_big" />
+<br /><br /><br />

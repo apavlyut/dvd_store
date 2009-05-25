@@ -1,0 +1,19 @@
+<% left_menu do %>
+	<%= render :partial => "genres_menu" %>
+<% end %>
+
+<% content_menu do %>
+	<%= render :partial => "sort_menu" %>
+<% end %>
+
+<div class="floats">
+	<% @movies.each do |movie| %>
+		<div class="left">
+	        <div class="r">
+				<%= movie_th movie %><br>
+				<%= votes_stars %>
+	        </div>
+	        <div class="min"></div>
+	    </div>
+	<% end %>
+</div>

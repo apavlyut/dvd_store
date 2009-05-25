@@ -1,0 +1,19 @@
+<%= f.hidden_field :type, :value => "Game" %>
+
+<fieldset>
+	<legend>Новая игра</legend>
+	<p>
+		<%= f.label :title, "Название" %>
+		<%= f.text_field :title %>
+	</p>
+</fieldset>
+<table>
+	<tr>
+		<td valign="top">:</td>
+		<td></td>
+	</tr>
+	<tr>
+		<td valign="top">Название2:</td>
+		<td><%= f.text_field :title_origin %></td>
+	</tr>
+</table>

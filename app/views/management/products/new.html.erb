@@ -1,0 +1,12 @@
+<% left_menu do %>
+	<%= render :partial => "management/home/menu" %>
+<% end %>
+
+<% page_title "Добавление товара" %>
+
+<% form_for :product, @product, :url => { :controller => "management/products", :action => "create" }, :html => { :multipart => true } do |f| %>
+
+	<%= render :partial => "form", :locals => {:f => f} %>
+	
+	<%= f.submit "Заебошить шутку нахуй &rarr;" %>
+<% end %>

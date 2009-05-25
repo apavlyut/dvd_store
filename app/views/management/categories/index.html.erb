@@ -1,0 +1,15 @@
+<% content_for :sidebar do %>
+	<%= render :partial => "management/home/menu" %>
+<% end %>
+
+
+<h1>Категории</h1>
+<hr>
+<%= button_to "Добавить новую категорию &rarr;", new_management_category_url %>
+<hr>
+
+<ul>
+	<% @categories.each do |category| %>
+		<li><%= category.title %> - <%= link_to "Edit", edit_management_category_url(category) %></li>
+	<% end %>
+</ul>

@@ -1,0 +1,9 @@
+<% content_for :sidebar do %>
+	<%= render :partial => "management/home/menu" %>
+<% end %>
+<h1>Список заказов магазина</h1>
+<ul>
+	<% @orders.each do |order| %>
+		<li><%= link_to order.created_at, management_order_url(order) %> &mdash; <%= human_is_captured(order) %> :: <%= link_to "Удалить",  management_order_url(order), :confirm => "Are ты sure?", :method => :delete %></li>
+	<% end %>
+</ul>

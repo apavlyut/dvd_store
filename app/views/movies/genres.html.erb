@@ -1,0 +1,20 @@
+<% left_menu do %>
+	<%= render :partial => "genres_menu" %>
+<% end %>
+
+<% content_menu do %>
+	<%= render :partial => "sort_menu" %>
+<% end %>
+
+<div class="floats">
+	<% @genre.movies.each do |movie| %>
+		<div id="movie_<%= movie.id %>" class="movie_th">
+			<div class="left">
+		        <div class="r">
+		            <%= movie_th movie %>
+		        </div>
+		        <div class="min"></div>
+		    </div>
+		</div>
+	<% end %>
+</div>

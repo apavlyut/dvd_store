@@ -1,0 +1,36 @@
+<table width="100%" border="0">
+	<tr>
+		<td width="20%">
+			
+		</td>
+		<td>
+			<div id="top_menu">
+				<ul>
+					<li><%= link_to "DVD", dvds_url %></li>
+					<li><%= link_to "Blu-Ray", blurays_url %></li>
+					<li><%= link_to "Игры", games_url %></li>
+					<li><%= link_to "Музыка", musics_url %></li>
+					<li><%= link_to "Игрушки", toys_url %></li>
+				</ul>
+			</div>
+		</td>
+	</tr>
+</table>
+
+<div class="shelf" id="top_shelf">
+	<div id="logo">
+		<%= link_to_unless_current image_tag("/images/logo.png", :id => "logo"), root_url %>
+	</div>
+	<ul class="top_right menu" id="top_small_menu">
+		<li><%= link_to "Корзина", cart_url %></li>
+		<li><%= link_to "Помощь" %></li>
+		<% if current_user %>
+		<li><%= link_to "Выход", logout_path %></li>
+		<% else %>
+		<li><%= link_to "Вход с паролем", login_path %></li>
+		<% end %>
+		<li><%= link_to "Управление", management_root_url %></li>
+	</ul>
+</div>
+
+<div class="under_shelf_big" />

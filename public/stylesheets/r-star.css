@@ -1,0 +1,33 @@
+.r-star {
+	float:left;
+	left:5%;
+	position:relative;
+	overflow:hidden;
+	padding:10px 0;
+	background:url(/images/assets/rounded/pixel.png);
+	background-color: silver;
+}
+
+.r-star-content {
+	padding: 5px;
+	padding-left: 20px;
+	padding-right: 20px;
+}
+
+.r-star .cn{
+	position:absolute;
+	width:20px;
+	height:20px;
+	left:-10px;
+	top:-10px;
+	background:url(/images/assets/rounded/r-star.png);
+}
+
+.r-star .cn.tr, .r-star .cn.br,
+.r-star-shape .cn.tr, .r-star-shape .cn.br {
+	margin-left:100%;
+}
+
+.r-star .cn.bl, .r-star .cn.br {
+	top:auto;
+}

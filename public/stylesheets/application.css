@@ -1,0 +1,741 @@
+/* Settings */
+* { font-size: 100.01%; }
+
+html, body, ul, ol, li, dl, dt, dd, p,
+h1, h2, h3, h4, h5, h6, blockquote,
+form, legend, table, td, th {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	color: #000000; 
+	font-family: Arial, sans-serif; 
+	line-height: 1.3; 
+	background: #ffffff;
+	/*
+	background: #ffffff url(/images/assets/rounded/pixel.png) repeat;
+	*/
+}
+
+#content_menu, #content_menu ul, #content_menu li {
+	padding: 0px;
+}
+
+#content_menu li {
+	display: inline;
+	padding-right: 5pt;
+}
+
+#content_menu {
+	padding-bottom: 20pt;
+}
+
+.content h3 {
+	font-size: 16pt;
+	padding-bottom: 15pt;
+	padding-top: 10pt;
+	font-weight: normal;
+}
+
+.content h2 {
+	font-size: 20pt;
+	padding-bottom: 20pt;
+	padding-top: 15pt;
+	font-weight: normal;
+}
+
+
+div.item {
+	border: 0px solid red;
+}
+
+a {color: #2e4f9d;}
+
+a:hover {color: #cc0000 !important;}
+
+a.medium {
+	font-size: 16pt;
+}
+
+div.shelf {
+	background: url(/images/assets/shelf.png) repeat-x;
+	height: 25px;
+	position: relative;
+	border: 0px solid red;
+	min-width: 600px;
+}
+
+div.under_shelf_small {
+	background: url(/images/assets/under_shelf_small.png) repeat-x;
+	height: 55px;
+}
+div.under_shelf_big {
+	background: url(/images/assets/under_shelf_big.png) repeat-x 0 -30px;
+	height: 128px;
+}
+
+ul.menu li {
+	display: inline;
+	list-style-type: none;
+	padding: 5px;
+}
+
+.content {
+	border: 0px solid red;
+	padding-left: 20pt;
+}
+
+.content h1 {
+	font-size: 28pt;
+	font-weight: normal;
+	padding-top: 5pt;
+	padding-bottom: 5pt;
+}
+
+h1#page_title {
+	font-size: 20pt;
+	font-weight: normal;
+	padding-top: 20pt;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+li {
+	list-style-type: none;
+	padding-left: 10px;
+	padding-top: 5px;
+}
+
+.sidebar {
+	padding-left: 10pt;
+}
+
+.sidebar h3 {
+	padding-bottom: 10pt;
+	font-size: 16pt;
+	font-weight: normal;
+}
+
+.sidebar ul li {
+	list-style-type: none;
+	padding-left: 20px;
+	padding-top: 5px;
+}
+
+#top_menu {
+	min-width: 600px;
+	border: 0px solid red;
+	padding-bottom: 15pt;
+	padding-top: 15pt;
+}
+
+#top_menu ul {
+	font-size: 20pt;
+}
+
+#top_menu ul li{
+	display: inline;
+	padding-left: 20pt;
+	padding-right: 20pt;
+}
+
+#top_menu a {
+	color: #191919;
+	padding: 10px;
+	text-decoration: none;
+	font-family: Arial, Helvetica, Geneva, sans-serif;
+}
+
+.top_right {
+	float: right;
+	padding-top: 3px;
+}
+
+
+.top_right li a {
+	color: #333;
+}
+
+.menu a {
+	color: #191919;
+	padding: 10px;
+	text-decoration: none;
+	font-family: Arial, Helvetica, Geneva, sans-serif;
+}
+
+img {
+	border: 0px;
+}
+
+#columns {
+	min-width: 865px;
+	padding-top: 10pt;
+}
+
+#search_box {
+	padding: 10pt;
+	padding-top: 20pt;
+	padding-bottom: 40pt;
+}
+
+div#left_column {
+	border: 0px solid red;
+	width: 20%;
+	float: left;
+	min-width: 255px;
+}
+
+div#content_column {
+	border: 0px solid green;
+	width: 70%;
+	float: left;
+}
+
+/* Full Movie */
+
+div.movie_full h1.title {
+	padding: 0;
+	margin: 0;
+}
+
+h2.title_origin {
+	font-size: 14pt;
+	color: gray;
+	padding: 0;
+	margin: 0;
+	padding-bottom: 15pt;
+}
+
+div.stars {
+	border: 0px solid green;
+	padding-bottom: 15pt;
+}
+
+div.stars a.js {
+	color: black;
+	font-size: 13px;
+	border-bottom: 1px dashed black;
+	margin-left: 10px;
+	padding-left: 0px;
+}
+
+div.movie_full p {
+	padding-bottom: 10pt;
+	font-size: 13px;
+}
+
+div.cover {
+	float: left;
+	border: 0px solid red;
+	padding: 5pt;
+	margin-right: 20pt;
+}
+
+div.producer {
+	padding-right: 20pt;
+	border: 0px solid red;
+	padding-bottom: 10pt;
+	font-size: 13px;
+}
+
+div.actors {
+	font-size: 13px;
+	border: 0px solid yellow;
+	padding-bottom: 10pt;
+}
+
+div.description .title {
+	font-size: 18pt;
+	text-transform: lowercase;
+	margin-bottom: 10pt;
+}
+
+div.description .text {
+	color: #333;
+	font-size: 13px;
+}
+
+div.details {
+	border: 0px solid green;
+	font-size: 13px;
+}
+
+div.details h2 {
+	font-size: 18pt;
+	text-transform: lowercase;
+	margin-bottom: 5pt;
+	margin-top: 10pt;
+}
+
+div.details .title {
+	font-weight: bold;
+	padding-bottom: 5pt;
+}
+
+div.details .text {
+	padding-bottom: 10pt;
+}
+
+div.details_left {
+	float: left;
+	width: 45%;
+	padding: 0 5pt 0 5pt;
+	border: 0px solid red;
+}
+
+div.details_right {
+	float: left;
+	width: 40%;
+	padding: 0 5pt 0 5pt;
+	border: 0px solid red;
+}
+
+div.details_text {
+	float: left;
+	border: 0px dashed green;
+	width: 35%;
+}
+
+div.details_media {
+	float: right;
+	border: 0px solid red;
+	width: 64%;
+}
+
+div.add_to_cart {
+	float: right;
+	border: 2px solid silver;
+	padding: 15pt;
+	padding-left: 20pt;
+	padding-right: 20pt;
+	margin-left: 15pt;
+	margin-bottom: 15pt;
+	text-align: center;
+}
+
+div.add_to_cart p {
+	font-size: 18pt;
+}
+
+/* End Full Movie */
+
+div.all_movies {
+	width: 79%;
+	float: right;
+}
+
+/* Movie */
+
+.cover {
+}
+
+.box {
+	position: relative;
+}
+
+/* Movie Large DVD */
+
+.large-dvd-image {
+	padding-top: 6px;
+	padding-left: 4px;
+	/*
+	max-width: 205px;
+	height: 296px; */
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.large-dvd-cover {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 215px;
+}
+
+/* Movie Small DVD */
+
+.small-dvd-image {
+	padding-top: 4px;
+	padding-left: 3px;
+	/*
+	height: 196px;
+	*/
+}
+
+.small-dvd-cover {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 144px;
+}
+
+/* Movie Large BLUERAY */
+
+.large-blueray-image {
+	padding-top: 6px;
+	padding-left: 4px;
+	/*
+	width: 205px;
+	height: 296px;
+	*/
+}
+
+.large-blueray-cover {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 215px;
+}
+
+/* Movie Small BLUERAY */
+
+.small-blueray-image {
+	padding-top: 4px;
+	padding-left: 3px;
+	/*
+	width: 137px;
+	height: 196px;
+	*/
+}
+
+.small-blueray-cover {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 144px;
+}
+
+
+/* Movie TH */
+
+.movie_th {
+	position: relative;
+}
+
+.movie_th .details {
+	position: absolute;
+	top: -5px;
+	left: 0;
+	display: none;
+}
+/* Movie TH  End */
+
+
+a.js {
+	text-decoration: none;
+	border-bottom: dashed 1px blue;
+}
+
+
+/* Helpers */
+
+.centered {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+/* End Helpers */
+
+.top_tag {
+	background-color: white;
+	border: 0px solid grey;
+	float: left;
+	height: 170px;
+	margin-left: 150px;
+	margin-top: 80px;
+	width: 150px;
+	padding: 10pt;
+}
+
+.top_tag h3 {
+	text-transform: uppercase;
+	font-size: 14px;
+}
+
+.top_tag p {
+	font: 14px "Courier New", Courier, mono;
+	
+}
+
+/* My FLoats*/
+.with_large_cover {
+	height: 295px;
+}
+
+.with_small_cover {
+	height: 204px;
+}
+
+/* My Comment */
+.frontpage {
+	padding-left: 5%;
+}
+
+.my_floats {
+	border: 0px solid red;
+	overflow: hidden;
+	min-width: 720px;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	padding-top: 9px;
+}
+
+.my_float {
+	border: 0px dashed red;
+	float: left;
+	padding-left: 2%;
+	padding-right: 2%;
+}
+
+
+a.clear {
+	text-decoration: none;
+}
+
+.top_large {
+	position: relative;
+}
+
+.top_large .details {
+	position: absolute;
+	top: -9px;
+	left: -9px;
+	background: url(/images/assets/movie_large_hover.png) no-repeat;
+	width: 226px;
+	height: 312px;
+	
+	border: 0px solid red;
+	padding: 15pt;
+	color: white;
+	width: 185px;
+	height: 295px;
+}
+
+.top_large .details h3 {
+	font-weight: normal;
+}
+
+.top_large .details .price {
+	color: black;
+	position: absolute;
+	bottom: 40px;
+	right: 25px;
+	background-color: #fed900;
+	padding: 2pt;
+	padding-left: 5pt;
+	padding-right: 5pt;
+}
+
+.movie_th {
+	position: relative;
+}
+
+.movie_th .th_details {
+	top: -6px;
+	left: -6px;
+	background: url(/images/assets/movie_th_hover.png) no-repeat;
+	position: absolute;
+	width: 120px;
+	height: 180px;
+	
+	border: 0px solid red;
+	padding: 10pt;
+	color: white;
+
+}
+.movie_th .th_details h3 {
+	font-weight: normal;
+}
+
+.movie_th .th_details .price {
+	color: black;
+	position: absolute;
+	bottom: 15px;
+	right: 20px;
+	background-color: #fed900;
+	padding: 2pt;
+	padding-left: 5pt;
+	padding-right: 5pt;
+}
+
+
+#top_shelf {
+	position: relative;
+}
+
+div#logo {
+	position: absolute;
+	padding: 5pt;
+	margin-left: 10pt;
+	top:  -54px;
+	border: 1px solid grey;
+	background-color: #e6e6e6;
+}
+
+#product_fields {
+	border: 0px solid red;
+}
+
+#product_fields ul li {
+	padding: 5pt;
+	padding-left: 20pt;
+}
+
+#product_fields ul li a {
+	font-size: 14pt;
+	padding-left: 5pt;
+}
+
+
+/* From Lebedev  */
+.floats {
+	padding-right: 0%;
+	/* Эти правила для IE */
+	clear: both;
+	width: 95%;
+	height: 212px;
+}
+
+img.bordered {
+	border: 1px groove silver;
+}
+
+.shelf_title {
+	background-color: #fed900;
+	font-size: 22px;
+	float: left;
+	padding-left: 10pt;
+	padding-right: 10pt;
+	text-transform: lowercase;
+	border: 1px solid grey;
+	margin-top: -4px;
+	margin-left: 30pt;
+	z-index: 2;
+	position: absolute;
+}
+
+.line {
+	overflow: hidden;
+}
+
+
+.floats:after {
+	content: '';
+	display: block;
+	clear: both;
+}
+
+.floats .left {
+	border: 0px solid red;
+	position: relative;
+	float: left;
+	
+	/* Убираем удвоение отступов в IE */
+	display: inline;
+	
+	/* Прячем все, что вдруг вылезло за наши ограничения */
+	overflow: hidden;
+	
+	/* Отсупы между float-блоками */
+	margin: 0em 2em 0em 0em;
+	
+	/* Задаем минимальную ширину по картинке и тексту */
+	min-width: 165px;
+}
+
+.floats .left .r {
+	border: 0px dashed blue;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	padding: 10pt;
+}
+
+.floats .left .min {
+	border: 0px dotted black;
+	/* Задаем минимальную высоту по картинке */
+	margin: 0 0 220px 0;
+	
+	/* Задаем минимальную высоту по тексту */
+	height: 4em;
+	
+	/* Дублируем значение минимальной ширины по картинке для IE */
+	width: 145px;
+}
+/* End From Lebedev */
+
+/* Form Design */
+form h2 {
+	margin-top: 10pt;
+	padding: 10pt;
+	font-size: 20pt;
+	font-weight: normal;
+}
+
+form p {
+	padding: 10pt;
+}
+
+form {
+	
+}
+
+form fieldset {
+	margin: 10pt;
+}
+
+form label {
+	font-size: 14pt;
+}
+
+form textarea, form .input{
+	width: 100%;
+}
+
+form .input {
+	margin-bottom: 5pt;
+	margin-top: 10pt;
+	font-size: 18pt;
+}
+
+/* End Form Design*/
+
+
+/* Autocomplete */
+div.list_of_actors {
+	border: 1px solid blue;
+}
+
+div.actors_place {
+	border: 1px dashed green;
+}
+
+div.actors_suggestions_list {
+	position: absolute;
+  	width: 350px;
+  	border: 1px solid orange;
+  	background: white;
+}
+
+div.actors_suggestions_lists ul {
+  border:1px solid #red;
+  margin:0;
+  padding:0;
+  width:100%;
+  list-style-type:none;
+}
+
+/* End Autocomplete*/  
+
+#countries_list, #categories_list, #actors_list {
+	padding: 10pt;
+}
+
+#countries_list div, #categories_list div, #actors_list div {
+	float: left;
+	padding-right: 5pt;
+}

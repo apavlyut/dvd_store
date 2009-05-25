@@ -1,0 +1,143 @@
+<% content_for :head do %>
+	<%= javascript_include_tag "product" %>
+<% end %>
+
+<%= f.hidden_field :type, :value => "Movie" %>
+<p>
+	<%= f.label :title, "Название" %><br/>
+	<%= f.text_field :title, :class => "input" %> 
+	<br/>
+	
+	<%= f.label :title_origin, "Оригинальное название" %><br/>
+	<%= f.text_field :title_origin, :class => "input" %>
+	<br/>
+	
+	<%= f.label :release_date, "Дата выпуска" %> <br>
+	<%= f.date_select :release_date, :size => 10  %><br>
+	<br/>
+	
+	<%= f.label :price, "Цена:" %>&nbsp;&nbsp;<br>
+	<%= f.text_field :price, :class => "input", :style => "width:150px"  %> руб.
+	<br/>
+	<br/>
+	
+	<script type="text/javascript" charset="utf-8">
+	
+		function captureProducer(text, li) {
+			$("product_producer_id").value = li.id;
+		}
+		
+		function captureFilmStudio(text, li) {
+			$("product_film_studio_id").value = li.id;
+		}
+		
+	</script>
+	
+	<%= f.hidden_field :producer_id %>
+	
+	<%= label :producer, :full_name, "Режиссер:" %>&nbsp;&nbsp;<br>
+	<%= text_field_with_auto_complete :producer, :full_name, { :value => (@product.producer.full_name if @product.producer), :class => "input"}, { :after_update_element => "captureProducer"} %>
+	
+	<p>
+	<%= f.hidden_field :film_studio_id %>
+	
+	<%= label :film_studio, :title, "Кинокомпания:" %>&nbsp;&nbsp;<br>
+	<%= text_field_with_auto_complete :film_studio, :title, { :value => (@product.film_studio.title if @product.film_studio), :class => "input"}, { :after_update_element => "captureFilmStudio"} %>
+	</p>
+	
+	<%= tags_for_autocomplete "Страна", "country", "title", @product.countries %>
+	
+	
+	<%= tags_for_autocomplete "Категория Фильма", "genre", "title", @product.genres %>
+	
+	<%= tags_for_autocomplete "В ролях", "actor", "full_name", @product.actors %>
+
+
+<fieldset>
+	<legend>Медиа</legend>
+	
+	<table cellspacing="10">
+		<tr>
+			<td valign="top">
+				<h3>Обложка</h3>
+				<p>
+					<%= image_tag("/images/covers/cover_th_#{@product.cover.filename}", :class => :bordered ) unless @product.new_record? %><br>
+				</p><p>
+					<%= label_tag :cover_file, "Изменить:" %> <br>
+					<%= file_field_tag :cover_file %>
+				</p>
+			</td>
+			<td valign="top">
+				<h3>Кадры из фильма</h3>
+				<div id="screenshot_ths">
+					<%= render :partial => "screenshot_th", :collection => @product.screenshots %>
+				</div>
+				
+				
+				<div id="screens_input">
+					<%= render :partial => "screenshot" %>
+				</div>
+				<%= link_to_function "+ Добавить еще кадров" do |page|
+						page.insert_html :bottom, "screens_input", :partial => "screenshot"
+					end
+				%>
+			</td>
+		</tr>
+		<tr>
+			<td colspan="2">
+				<h3>Код трейлера</h3>
+				<%= f.text_area :trailer, :rows => 10 %>
+			</td>
+		</tr>
+	</table>
+		
+</fieldset>
+
+<fieldset>
+	<legend>Дополнительные параметры</legend>
+	<p>
+		<%= f.label :distributor, "Дистрибъютер" %>
+		<%= f.text_field :distributor, :class => "input" %>
+	</p>
+	<p>
+		<%= f.label :regional_code, "Региональный код" %>
+		<%= f.text_field :regional_code, :class => "input" %>
+	</p>
+	<p>
+		<%= f.label :data_medium, "Формат носителя" %>
+		<%= f.text_field :data_medium, :class => "input" %>
+	</p>
+	<p>
+		<%= f.label :subtitle, "Субтитры" %>
+		<%= f.text_field :subtitle, :class => "input" %>
+	</p>
+	<p>
+		<%= f.label :audio_track, "Звуковые дорожки" %>
+		<%= f.text_field :audio_track, :class => "input" %>
+	</p>
+	<p>
+		<%= f.label :split_screen_format, "Формат изображения" %>
+		<%= f.text_field :split_screen_format, :class => "input" %>
+	</p>
+	<p>
+		<%= f.label :addons, "Дополнтиельные материалы" %>
+		<%= f.text_area :addons, :class => "input", :rows => 5 %>
+	</p>
+	<p>
+		<%= f.label :movie_duration, "Продолжительность фильма, минут" %>
+		<%= f.text_field :movie_duration, :class => "input" %>
+	</p>
+</fieldset>
+
+<p>
+	<%= f.label :description, "Описание" %> <br/>
+	<br/>
+	<%= f.text_area :description, :rows => 10 %>
+	<br/>
+	
+</p>
+
+<% if @product.new_record? %>
+	<%= f.submit "Создать товар &rarr;" %>
+<% end %>
+	

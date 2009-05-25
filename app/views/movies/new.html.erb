@@ -1,0 +1,13 @@
+<h1>Фильмы</h1>
+<%= link_to "Добавить фильм", new_movie_url %>
+<hr>
+
+<% content_for :sidebar do %>
+	<%= render :partial => "genres_menu" %>
+<% end %>
+	
+<h2>Новый фильм</h2>
+<% form_for @movie do |f| %>
+	<%= render :partial => "form", :locals => {:f => f} %>
+    <%= f.submit "Добавить" %>
+<% end %>

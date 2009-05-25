@@ -1,0 +1,15 @@
+<% content_for :sidebar do %>
+	<%= render :partial => "management/home/menu" %>
+<% end %>
+
+<% content_menu do %>
+	<h2>Редактирование товара</h2>
+<% end %>
+
+<% form_for :product, @product, :url => { :controller => "management/products", :action => "update" }, :html => {:method => :put,:multipart => true } do |f| %>
+	<%= render :partial => "form", :locals => { :f => f } %>
+	
+	<%= f.submit "Сохранить изменения &rarr;" %>
+<% end %>
+
+<%= button_to "Удалить этот товар",  management_product_url(@product), :confirm => "Are ты sure?", :method => :delete %>

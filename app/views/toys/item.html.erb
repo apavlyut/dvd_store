@@ -1,0 +1,136 @@
+<% page_title "&nbsp;" %>
+
+<% left_menu do %>
+	<%= render :partial => "shared/categories_menu", :locals => {:code => @toy.product_type.code} %>
+<% end %>
+
+<%= page_title "Игрушка" %>
+
+<div class="movie_full">
+	
+	<div class="cover">
+		<%= image_tag("/images/covers/cover_#{@toy.cover_filename}", :class => "bordered") %>
+	</div>
+	<div class="add_to_cart">
+		<p>
+			<strong><%= @toy.price %></strong> руб.
+		</p>
+		<%= link_to image_tag("/images/assets/add_to_cart.png"), :controller => :cart, :action => :add_to_cart, :id => @toy %>
+	</div>
+	
+	<h1 class="title"><%= @toy.title %></h1>
+	<h2 class="title_origin"><%= @toy.title_origin %></h2>
+	<div class="stars">
+		<%= votes_stars %>
+		<%= link_to "#{rand(134)} отзывов", "#", :class => :js %>
+	</div>
+	
+	<p>
+		<%= @toy.categories.collect{ |category| link_to category.title, my_category_url("game", category) }.join(", ") %>
+	</p>
+
+	<p>
+		<%= "#{link_to @toy.film_studio.title}, " if @toy.film_studio %> 
+		<%= @toy.countries.collect{ |country| country.title }.join(", ") if @toy.countries %> 
+		<%= "(#{@toy.release_date.year}), " if @toy.release_date %>
+		<%= "#{@toy.movie_duration} мин." if @toy.movie_duration %>
+	</p>
+	<% if @toy.producer  %>
+	<div class="producer">
+		
+		<strong>Режиссер</strong>
+		<br>
+		<%= link_to @toy.producer.full_name %>
+		
+	</div>
+	<% end %>
+	
+	<% unless @toy.actors.empty? %>
+	<div class="actors">
+		
+		<strong>В ролях</strong>
+		<br>
+		<%= @toy.actors.collect{ |actor| link_to(actor.full_name) }.join(", ") %>
+		
+	</div>
+	<% end %>
+	
+	<p>&nbsp;</p>
+	<p>&nbsp;</p>
+	<% unless @toy.description.empty? %>
+		<div class="description" style="clear:both">
+			<div class="title">От издателя</div>
+		   	<div class="text"><%= textilize(@toy.description) %></div>
+		</div>
+	<% end %>
+	<div class="details">
+		
+		<div class="details_text">
+			
+			<h2>Подробности</h2>
+			
+			<div class="details_left">
+				<% if @toy.data_medium %>
+				<div class="title">Формат носителя</div>
+				<div class="text"><%= @toy.data_medium %></div>
+				<% end %>
+				<% if @toy.distributor %>
+				<div class="title">Дистрибьютер</div>
+				<div class="text"><%= @toy.distributor %></div>
+				<% end %>
+				<% if @toy.regional_code %>	
+				<div class="title">Региональный код</div>
+				<div class="text"><%= @toy.regional_code %></div>
+				<% end %>
+				<% if @toy.subtitle %>
+				<div class="title">Субтитры</div>
+				<div class="text"><%= @toy.subtitle %></div>	
+				<% end %>
+			</div>
+			
+			<div class="details_right">
+				<% if @toy.split_screen_format %>
+				<div class="title">Формат изображения</div>
+				<div class="text"><%= @toy.split_screen_format %></div>
+				<% end %>
+				<% if @toy.audio_track %>
+				<div class="title">Звуковые дорожки</div>
+				<div class="text"><%= @toy.audio_track %></div>
+				<% end %>
+				<% if @toy.addons %>
+				<div class="title">Дополнительные материалы</div>
+				<div class="text"><%= @toy.addons %></div>
+				<% end %>
+			</div>
+			
+		</div>
+		
+		<div class="details_media">
+			<h2>Мультимедиа</h2>
+			<%= link_to_function "Кадры из фильма" do |page|
+					page[:frames].show
+					page[:trailer].hide
+				end %> | 
+				<%= link_to_function "Трейлер"	do |page|
+						page[:frames].hide
+						page[:trailer].show
+					end %>
+			<div id="frames">
+				<p>&nbsp;</p>
+				<% @toy.screenshots.each do |sh| %>
+					<%= link_to (image_tag "/images/covers/screenshot_th_#{sh.filename}", :class => "bordered", :style => "float:left; margin: 0 10pt 10pt 0;"), "/images/covers/screenshot_#{sh.filename}", :target => "blank" %>
+				<% end %>
+			</div>
+			<div id="trailer" style="display:none">
+				<p>&nbsp;</p>
+				
+					<%= @toy.trailer %>
+				
+				<p>&nbsp;</p>
+				
+				<p>&nbsp;</p>
+			</div>
+		</div>
+	</div>
+	
+</div>@toy

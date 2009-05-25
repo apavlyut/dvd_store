@@ -1,0 +1,2 @@
+class Accessory < Product
+end

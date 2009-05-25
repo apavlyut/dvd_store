@@ -1,0 +1,45 @@
+<h3>Категории</h3>
+
+<% 
+	all_size = Product.find_all_by_product_type_id(ProductType.find_all_by_code(code)).size
+	min_font_size = 10
+	max_font_size = 20 
+%>
+
+<p style="padding:10pt">
+	<span style="font-size:14pt; padding:5pt;">
+		<%= link_to "Все сразу", my_products_url(code) %>
+	</span><br>
+<% Category.all_by_code(code).each do |category| %>
+
+<%
+	cat_size_percent = category.products.size*100/all_size
+
+	if cat_size_percent <= 10
+		css_size = 10
+	elsif cat_size_percent > 10 && cat_size_percent <= 20
+		css_size = 11
+	elsif cat_size_percent > 20 && cat_size_percent <= 30
+		css_size = 12
+	elsif cat_size_percent > 30 && cat_size_percent <= 40
+		css_size = 13
+	elsif cat_size_percent > 40 && cat_size_percent <= 50
+		css_size = 14
+	elsif cat_size_percent > 50 && cat_size_percent <= 60
+		css_size = 15
+	elsif cat_size_percent > 60 && cat_size_percent <= 70
+		css_size = 16
+	elsif cat_size_percent > 70 && cat_size_percent <= 80
+		css_size = 17
+	elsif cat_size_percent > 80 && cat_size_percent <= 90
+		css_size = 18
+	elsif cat_size_percent > 90 && cat_size_percent <= 100
+		css_size = 19
+	end
+%>
+	<span style="font-size:<%= css_size %>pt; padding:5pt;">
+		<%= link_to_unless_current category.title, my_category_url(code, category.id), :style => "" %>
+	</span>
+	
+<% end %>
+</p>

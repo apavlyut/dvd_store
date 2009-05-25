@@ -1,0 +1,7 @@
+<li id='producer-li-<%= producer.id %>'>
+	<%= producer.full_name %> - 
+	<%= link_to_function 'Удалить' do |page|
+			page.remove "producer-li-#{producer.id}"
+		end	%>
+	<input type='hidden' name='product[producer_ids][]' value='<%= producer.id %>'>
+</li>

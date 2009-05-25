@@ -1,0 +1,11 @@
+<h1>Yo</h1>
+
+<%= debug @image.first.columns %>
+<%= debug @image.first.rows %>
+
+<% form_for :image, :url => { :action => "test"}, :html => { :multipart => true } do |f| %>
+	
+	<%= file_field_tag :cover_image %>
+	<%= f.submit "Загрузить" %>
+	
+<% end %>

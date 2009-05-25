@@ -1,0 +1,16 @@
+<% content_for :sidebar do %>
+	<%= render :partial => "shared/categories_menu", :locals => {:code => "game"} %>
+<% end %>
+
+<%= page_title "Все игры" %>
+
+<div class="floats small">
+<% @games.each do |game| %>
+	<div class="left">
+        <div class="r">
+            <%= render :partial => "shared/movie_th", :locals => {:movie => game } %>
+        </div>
+        <div class="min"></div>
+    </div>
+<% end %>
+</div>
